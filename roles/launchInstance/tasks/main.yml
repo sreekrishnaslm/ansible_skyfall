@@ -1,0 +1,74 @@
+  - name: create an internal_network
+    quantum_network: 
+        name=internal_network
+        state=present
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+  
+  - name: add subnet to the internal_network
+    quantum_subnet:
+        state=present 
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        network_name=internal_network 
+        name=internalsubnet 
+        cidr=192.168.0.0/24
+        dns_nameservers=8.8.8.8
+  - name: Create a new key pair from id_rsa
+    nova_keypair:
+        state=present 
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        region_name=RegionOne
+        name=ssh_key
+        public_key={{ lookup('file','~/.ssh/id_rsa.pub') }}
+
+  - name: create a router
+    quantum_router:
+        state=present
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        region_name=RegionOne
+        name=router
+  - name: add gateway as external public network
+    quantum_router_gateway:
+        state=present
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        region_name=RegionOne
+        router_name=router
+        network_name=public
+  - name: add interface to internal network
+    quantum_router_interface:
+        state=present
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        region_name=RegionOne
+        router_name=router
+        subnet_name=internalsubnet
+  - name: launch an instance
+    nova_compute:
+        name=vm1
+        state=present
+        login_username=facebook879321525527467
+        login_password=smP0t1HBCctAe2lo
+        login_tenant_name=facebook879321525527467
+        auth_url=http://128.136.179.2:5000/v2.0
+        region_name=RegionOne
+        image_name=ubuntu14.04-LTS
+        image_exclude=deprecated
+        flavor_ram=4096
+        key_name=ssh_key
+        auto_floating_ip=yes

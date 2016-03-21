@@ -1,0 +1,19 @@
+---
+- apt_repository: repo="deb http://debian.datastax.com/community stable main" state=present
+  become_user: root
+  when: (ansible_distribution in ['Debian','Ubuntu'])
+  register: result_apt
+
+- shell: curl -L http://debian.datastax.com/debian/repo_key | sudo apt-key add -
+  when: result_apt.changed
+  become_user: root
+
+- action: apt update_cache=yes
+  when: result_apt.changed
+
+- action: apt pkg="{{item}}" state=installed
+  with_items:
+    - cassandra-tools
+
+- service: name=cassandra state=started
+  become: true

@@ -1,0 +1,5 @@
+- name: launch instance and install cassandra
+  hosts: web
+  sudo: yes
+  roles:
+     - { role: futurice.cassandra }

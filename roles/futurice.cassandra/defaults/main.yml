@@ -1,7 +1,7 @@
 ---
-jdk_url: "http://download.oracle.com/otn/java/jdk/8u40-b26/jdk-8u40-linux-i586.tar.gz"
+jdk_url: "http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-linux-i586.tar.gz"
 jdk_install_path: "/opt/jdk"
-jdk_version: "1.8.0_31"
+jdk_version: "1.8.0_40"
 
 debian_mirror: "http://ftp.uk.debian.org/debian"
 

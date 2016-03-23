@@ -1,8 +1,9 @@
 - hosts: web
   sudo: yes
   roles:
-  - { role: futurice.cassandra }
+  - futurice.cassandra
   - sbaerlocher.redis
+  - weldpua2008.openjdk
 - hosts: web
   sudo: yes
   vars_files:

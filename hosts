@@ -2,4 +2,4 @@
 192.168.128.132
 
 [web]
-128.136.179.135 ansible_connection=ssh ansible_user=ubuntu
+128.136.179.185 ansible_connection=ssh ansible_user=ubuntu

@@ -81,7 +81,7 @@
         region_name=RegionOne
         image_name=ubuntu14.04-LTS
         image_exclude=deprecated
-        flavor_ram=4096
+        flavor_ram=8192
         key_name=ssh_key
         auto_floating_ip=yes
 

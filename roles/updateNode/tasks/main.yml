@@ -2,3 +2,5 @@
 - name: Update node
   apt:
         update_cache=yes
+  environment:
+    zookeeper_hosts: localhost:2181

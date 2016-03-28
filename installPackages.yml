@@ -1,0 +1,11 @@
+- hosts: web
+  sudo: yes
+  vars_files:
+    - vars/main.yml 
+  roles:
+  - updateNode
+  - futurice.cassandra
+  - sbaerlocher.redis
+  - weldpua2008.openjdk
+  - stevenharradine.apache2
+  - geerlingguy.nodejs

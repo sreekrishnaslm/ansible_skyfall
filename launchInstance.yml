@@ -1,0 +1,6 @@
+---
+- hosts: local
+  vars_files:
+    - vars/launch.yml 
+  roles:
+    - launchInstance

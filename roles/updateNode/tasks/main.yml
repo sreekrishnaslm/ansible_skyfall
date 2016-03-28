@@ -1,0 +1,4 @@
+---
+- name: Update node
+  apt:
+        update_cache=yes

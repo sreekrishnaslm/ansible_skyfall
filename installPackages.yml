@@ -1,5 +1,6 @@
 - hosts: web
-  sudo: yes
+  remote_user: root
+  become: yes
   vars_files:
     - vars/main.yml 
   roles:
@@ -9,4 +10,6 @@
   - weldpua2008.openjdk
   - stevenharradine.apache2
   - geerlingguy.nodejs
-  - tkuhlman.kafka
+  # - setupSchema
+  - zookeeper
+  - kafka

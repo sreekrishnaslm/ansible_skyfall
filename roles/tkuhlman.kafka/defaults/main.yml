@@ -1,9 +1,9 @@
 ---
 apache_mirror: http://apache.mirrors.tds.net
-kafka_hosts: 192.168.0.6:9092
-zookeeper_hosts: 192.168.0.6:2181
-kafka_listen_address: 192.168.0.6
-kafka_version: 0.8.1.1
+kafka_hosts: localhost:9092
+zookeeper_hosts: localhost:2181
+kafka_listen_address: localhost
+kafka_version: 0.8.2.1
 run_mode: Deploy
 skip_install: False
 
@@ -22,7 +22,7 @@ kafka_log_segment_bytes: "{{kafka_log_retention_bytes}}"
 kafka_log_cleanup_interval_mins: 1
 kafka_heap_opts: "-Xmx1G -Xms1G"
 kafka_tarball_location: /root
-kafka_tarball_name: "kafka_2.9.2-{{kafka_version}}.tgz"
+kafka_tarball_name: "kafka_2.11-{{kafka_version}}.tgz"
 monasca_wait_for_period: 30
 monasca_log_level: WARN
 zookeeper_connection_timeout_ms: 1000000

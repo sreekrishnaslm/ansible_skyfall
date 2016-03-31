@@ -1,3 +1,5 @@
+user: root
+group: root
 zookeeper_version: 3.4.7
 nodejs_forever: true
 nodejs_npm_global_packages:

@@ -1,0 +1,5 @@
+---
+
+- name: sansible.users_and_groups
+  src: https://github.com/sansible/users_and_groups.git
+  scm: git

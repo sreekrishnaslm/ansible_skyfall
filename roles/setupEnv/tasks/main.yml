@@ -1,0 +1,19 @@
+---
+# - copy: src=~/envVars.sh dest=/root/envVars.sh owner=root group=root mode=0777
+# - wait_for: path=/root/envVars.sh
+
+# - command: source /root/envVars.sh
+#   args:
+#      executable: /bin/bash
+
+- copy: src=~/skyfall/schema dest=/root owner=root group=root mode=0644 directory_mode=yes
+
+# - command: cqlsh –f consume*.cql
+
+# - command: cqlsh –f idm*.cql
+
+# - command: cqlsh –f manage*.cql
+
+# - command: cqlsh –f monitor*.cql
+
+# - command: cqlsh –f orchestration*.cql 

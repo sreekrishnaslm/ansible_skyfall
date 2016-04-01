@@ -10,6 +10,6 @@
   - weldpua2008.openjdk
   - stevenharradine.apache2
   - geerlingguy.nodejs
-  # - setupSchema
   - zookeeper
   - kafka
+  - setupEnv

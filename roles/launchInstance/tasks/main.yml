@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
   vars:
-        login_username: facebook530402993798728
-        login_password: 4Yhy4U1zjZUpA3Mn
-        login_tenant_name: facebook530402993798728
+        login_username: facebook879321525527467
+        login_password: smP0t1HBCctAe2lo
+        login_tenant_name: facebook879321525527467
         auth_url: http://128.136.179.2:5000/v2.0
   
   ## TODO ##

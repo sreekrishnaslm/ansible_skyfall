@@ -1,5 +1,3 @@
----
-- hosts: localhost
   vars:
         login_username: facebook879321525527467
         login_password: smP0t1HBCctAe2lo

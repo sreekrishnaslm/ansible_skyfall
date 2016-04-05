@@ -1,0 +1,6 @@
+---
+  - name: launch instance
+    hosts: localhost
+  
+    roles: 
+      - launchInstance

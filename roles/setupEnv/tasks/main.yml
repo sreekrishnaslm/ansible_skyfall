@@ -6,7 +6,7 @@
 #   args:
 #      executable: /bin/bash
 
-- copy: src=~/skyfall/schema dest=/root owner=root group=root mode=0644 directory_mode=yes
+- copy: src=~/skyfall/ dest=/root owner=root group=root mode=0755 directory_mode=yes
 
 # - command: cqlsh –f consume*.cql
 

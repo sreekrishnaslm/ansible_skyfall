@@ -5,5 +5,5 @@
   apt:
     name: "{{ item }}"
   with_items:
-    - openjdk-7-jre-headless
+    # - openjdk-7-jre-headless
     - zookeeperd

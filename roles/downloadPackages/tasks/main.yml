@@ -1,0 +1,32 @@
+---
+- name: Create directory skyfall
+  file: path=~/cassandra state=directory
+
+- name: download cassandra
+  get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/cassandra/
+
+- name: download cassandra
+  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz dest=~/
+
+- unarchive: src=jdk-8u77-linux-x64.tar.gz dest=~/
+
+- name: Move java files
+  command: mv jdk* /usr/local/java
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+
+  # - name: download cassandra
+  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/

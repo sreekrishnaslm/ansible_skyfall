@@ -1,5 +1,0 @@
-- command: Cqlsh –f consume*.cql
-- command: Cqlsh –f idm*.cql
-- command: Cqlsh –f manage*.cql
-- command: Cqlsh –f monitor*.cql
-- command: Cqlsh –f orchestration*.cql

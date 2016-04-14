@@ -1,32 +1,58 @@
 ---
-- name: Create directory skyfall
+- name: Create directory cassandra
   file: path=~/cassandra state=directory
 
-- name: download cassandra
-  get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/cassandra/
 
-- name: download cassandra
-  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz dest=~/
+- name: Download and Extract cassandra
+  unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/cassandra/ copy=no
 
-- unarchive: src=jdk-8u77-linux-x64.tar.gz dest=~/
+- name: Create directory java
+  become: yes
+  become_method: sudo
+  file: path=/usr/local/java state=directory
+
+
+- name: Download java
+  command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
+
+- name: Extract java
+  command: tar -zxf jdk.tar.gz
 
 - name: Move java files
-  command: mv jdk* /usr/local/java
+  become: yes
+  become_method: sudo
+  command: mv /home/ubuntu/jdk1.8.0_73 /usr/local/java
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name: Create directory redis
+  file: path=~/redis state=directory
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name: Download and Extract redis
+  unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/redis/ copy=no
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name : Install unzip
+  become: yes
+  become_method: sudo
+  apt: name=unzip state=present
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name: Create directory gradle
+  file: path=~/gradle state=directory
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name: Download and Extract gradle
+  unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/gradle/ copy=no
+  
+- name: Create directory kafka
+  file: path=~/kafka state=directory
 
-  # - name: download cassandra
-  # get_url: url=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/skyfall/
+- name: Download and Extract kafka
+  unarchive: src=http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz dest=~/kafka/ copy=no
+
+
+# - name: Create directory skyfall
+#   file: path=~/skyfall state=directory
+
+- name: Copy skyfall zip
+  copy: src=~/skyfall.tar.gz dest=~/
+
+- name: Unzip Skyfall zip
+  unarchive: src=~/skyfall.tar.gz dest=~/ copy=no
+

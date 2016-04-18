@@ -1,0 +1,84 @@
+---
+
+- name: Download and Extract cassandra
+  unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
+
+- name: Rename apache cassansdra to cassansdra
+  shell: mv ~/apache-cassandra-2.2.5 ~/cassansdra
+
+
+- name: Download java
+  command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
+
+- name: Create directory java
+  file: path=~/java state=directory
+
+- name: Extract java
+  command: tar -zxf jdk.tar.gz -C ~/java --strip-components=1
+
+- name: Move java files
+  become: yes
+  become_method: sudo
+  command: mv /home/ubuntu/java /usr/local/
+
+
+- name: Download and Extract redis
+  unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
+
+- name: Rename redis
+  shell: mv ~/redis-3.0.7 ~/redis
+
+- name : Install unzip
+  become: yes
+  become_method: sudo
+  apt: name=unzip state=present
+
+- name: Download and Extract gradle
+  unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
+
+- name: Rename gradle
+  shell: mv ~/gradle-2.11 ~/gradle
+  
+
+- name: Download and Extract kafka
+  unarchive: src=http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz dest=~/ copy=no
+
+- name: Rename kafka
+  shell: mv ~/kafka_2.11-0.8.2.1 ~/kafka
+
+
+- name: Create directory skyfall
+  file: path=~/skyfall state=directory
+
+- name: Copy skyfall zip
+  copy: src=~/skyfall.tar.gz dest=~/
+
+- name: Unzip Skyfall zip
+  unarchive: src=~/skyfall.tar.gz dest=~/ copy=no
+
+- name: Copy config file
+  copy: src=~/config.txt dest=~/
+
+- name: Copy config to profile
+  become: yes
+  become_method: sudo
+  shell: cat /home/ubuntu/config.txt >> /etc/profile
+
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/bin/java" 1
+  command: update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/bin/javac" 1
+  command: update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/bin/javaws" 1
+  command: update-alternatives --set java /usr/local/java/bin/java
+  command: update-alternatives --set javac /usr/local/java/bin/javac
+  command: update-alternatives --set javaws /usr/local/java/bin/javaws
+  command: reboot
+
+- name: waiting for server to come back
+  local_action: wait_for host=128.136.179.139 
+                port=22
+                state=started
+  sudo: false
+
+

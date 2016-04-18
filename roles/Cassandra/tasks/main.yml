@@ -1,0 +1,21 @@
+---
+- name: Create directory cassandra
+  become: yes
+  become_method: sudo
+  file: path=/var/lib/cassandra state=directory
+
+- name: Create directory cassandra
+  become: yes
+  become_method: sudo
+  file: path=/var/log/cassandra state=directory
+
+- name: Change owner permission 
+  become: yes
+  become_method: sudo
+  command: chown -R $USER /var/lib/cassandra  
+  command: chown -R $USER /var/log/cassandra
+
+
+- name: Set Env var
+  shell: export CASSANDRA_HOME=~/cassandra
+  shell: export PATH=$PATH:$CASSANDRA_HOME/bin

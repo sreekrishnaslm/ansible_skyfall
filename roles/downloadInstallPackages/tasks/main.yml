@@ -3,8 +3,8 @@
 # - name: Download and Extract cassandra
 #   unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
 
-# - name: Rename apache cassansdra to cassansdra
-#   shell: mv ~/apache-cassandra-2.2.5 ~/cassansdra
+# - name: Rename apache cassandra to cassandra
+#   shell: mv ~/apache-cassandra-2.2.5 ~/cassandra
 
 
 # - name: Download java
@@ -50,19 +50,19 @@
 # - name: Create directory skyfall
 #   file: path=~/skyfall state=directory
 
-# - name: Copy skyfall zip
-#   copy: src=~/skyfall.tar.gz dest=~/ state=present
+- name: Copy skyfall zip
+  copy: src=~/skyfall.tar.gz dest=~/
 
-# - name: Unzip Skyfall zip
-#   unarchive: src=~/skyfall.tar.gz dest=~/ copy=no
+- name: Unzip Skyfall zip
+  unarchive: src=~/skyfall.tar.gz dest=~/ copy=no
 
-# - name: Copy config file
-#   copy: src=~/config.txt dest=~/
+- name: Copy config file
+  copy: src=~/config.txt dest=~/
 
-# - name: Copy config to profile
-#   become: yes
-#   become_method: sudo
-#   shell: cat /home/ubuntu/config.txt >> /etc/profile
+- name: Copy config to profile
+  become: yes
+  become_method: sudo
+  shell: cat /home/ubuntu/config.txt >> /etc/profile
 
 - name: Run Commands
   become: yes
@@ -76,7 +76,7 @@
   command: reboot
 
 - name: waiting for server to come back
-  local_action: wait_for host=128.136.179.117
+  local_action: wait_for host=128.136.179.50
                 port=22
                 state=started
   sudo: false

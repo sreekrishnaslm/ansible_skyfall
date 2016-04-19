@@ -3,6 +3,6 @@
   vars_files:
     - vars/main.yml 
   roles:
-  - updateNode
-  - downloadInstallPackages
+  # - updateNode
+  # - downloadInstallPackages
   - Cassandra

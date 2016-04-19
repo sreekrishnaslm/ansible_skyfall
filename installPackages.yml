@@ -6,4 +6,5 @@
   # - updateNode
   # - downloadInstallPackages
   # - Cassandra
-  - Redis
+  # - Redis
+  - Kafka

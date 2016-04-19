@@ -1,0 +1,2 @@
+---
+- replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'

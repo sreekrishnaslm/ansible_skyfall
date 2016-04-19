@@ -5,4 +5,5 @@
   roles:
   # - updateNode
   # - downloadInstallPackages
-  - Cassandra
+  # - Cassandra
+  - Redis

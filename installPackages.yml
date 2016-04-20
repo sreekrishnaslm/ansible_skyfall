@@ -6,6 +6,7 @@
   # - updateNode
   # - downloadInstallPackages
   # - Cassandra
+<<<<<<< HEAD
   - Redis
   - Kafka
   - Gradle
@@ -13,3 +14,7 @@
   - apiGateway
   - UI
   - Microservice
+=======
+  # - Redis
+  - Kafka
+>>>>>>> 9ae3f5f50aa1d82c1aa2c33b60b86da7dca93357

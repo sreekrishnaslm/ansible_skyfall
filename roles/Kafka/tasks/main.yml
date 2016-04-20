@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 - name: Set no. of partitions to 7
   replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'
   become: yes
@@ -13,3 +14,6 @@
   shell: nohup kafka-server-start.sh config/server.properties &
   args:
     chdir: ~/kafka
+=======
+- replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'
+>>>>>>> 9ae3f5f50aa1d82c1aa2c33b60b86da7dca93357

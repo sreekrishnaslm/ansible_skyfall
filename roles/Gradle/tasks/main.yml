@@ -15,25 +15,66 @@
     chdir: ~/skyfall
 
 - name: Building Microservices
-  command: chdir=~/skyfall/server gradle -x test microservice:administration:build
-  command: chdir=~/skyfall/server gradle -x test microservice:idm:build
-  command: chdir=~/skyfall/server gradle -x test microservice:orchestration:build
-  command: chdir=~/skyfall/server gradle -x test microservice:consume:build
-  command: chdir=~/skyfall/server gradle -x test microservice:manage:build
-  command: chdir=~/skyfall/server gradle -x test microservice:monitor:build
-  command: chdir=~/skyfall/server gradle -x test microservice:cgps:build
-  command: chdir=~/skyfall/server gradle -x test microservice:iwan:build
-  command: chdir=~/skyfall/server gradle -x test microservice:logconsumer:build
-  command: chdir=~/skyfall/server gradle -x test microservice:notification:build
-
+  command: gradle -x test microservice:administration:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:idm:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:orchestration:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:consume:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:manage:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:monitor:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:cgps:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:iwan:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:logconsumer:build
+  args:
+    chdir: ~/skyfall/server 
+  command: gradle -x test microservice:notification:build
+  args:
+    chdir: ~/skyfall/server 
+  
 - name: Running DB Installer
-  command: chdir=~/skyfall/server/microservice java -jar administration/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar idm/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar orchestration/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar consume/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar manage/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar monitor/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar cgps/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar iwan/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar logconsumer/build/libs/*.jar -Mode NewInstall
-  command: chdir=~/skyfall/server/microservice java -jar notification/build/libs/*.jar -Mode NewInstall
+  command: java -jar administration/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar idm/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar orchestration/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar consume/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar manage/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar monitor/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar cgps/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar iwan/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar logconsumer/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar notification/build/libs/*.jar -Mode NewInstall
+  args:
+    chdir: ~/skyfall/server/microservice 
+  

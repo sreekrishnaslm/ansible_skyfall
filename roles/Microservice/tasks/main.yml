@@ -1,14 +1,32 @@
 - name: Running Microservices
-  command: chdir=~/skyfall/server/microservice java -jar administration/build/libs/*.jar 
-  command: chdir=~/skyfall/server/microservice java -jar idm/build/libs/*.jar 
-  command: chdir=~/skyfall/server/microservice java -jar orchestration/build/libs/*.jar 
-  command: chdir=~/skyfall/server/microservice java -jar consume/build/libs/*.jar 
-  command: chdir=~/skyfall/server/microservice java -jar manage/build/libs/*.jar
-  command: chdir=~/skyfall/server/microservice java -jar monitor/build/libs/*.jar
-  command: chdir=~/skyfall/server/microservice java -jar iwan/build/libs/*.jar
-  command: chdir=~/skyfall/server/microservice java -jar logconsumer/build/libs/*.jar 
-  command: chdir=~/skyfall/server/microservice java -jar notification/build/libs/*.jar
-
+  command: java -jar administration/build/libs/*.jar 
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar idm/build/libs/*.jar 
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar orchestration/build/libs/*.jar 
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar consume/build/libs/*.jar 
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar manage/build/libs/*.jar
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar monitor/build/libs/*.jar
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar iwan/build/libs/*.jar
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar logconsumer/build/libs/*.jar 
+  args:
+    chdir: ~/skyfall/server/microservice 
+  command: java -jar notification/build/libs/*.jar
+  args:
+    chdir: ~/skyfall/server/microservice 
+  
 - name: npm start on apigateway
   command: npm start
   args:

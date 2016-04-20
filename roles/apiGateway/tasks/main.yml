@@ -1,0 +1,10 @@
+---
+- name: Source ccsrc
+  command: source ccsrc
+  args:
+    chdir: ~/skyfall
+
+- name: Running npm Install in apigateway
+  command: npm install
+  args:
+    chdir: ~/skyfall/apigateway

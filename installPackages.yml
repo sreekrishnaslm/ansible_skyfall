@@ -7,3 +7,8 @@
   # - downloadInstallPackages
   # - Cassandra
   - Redis
+  - Kafka
+  - Gradle
+  - Nodejs
+  - apiGateway
+  - UI

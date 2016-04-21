@@ -1,8 +1,6 @@
 ---
 - name: Set no. of partitions to 7
   replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'
-  become: yes
-  become_method: sudo
 
 - name: Run zookeeper
   shell: nohup zookeeper-server-start.sh config/zookeeper.properties &

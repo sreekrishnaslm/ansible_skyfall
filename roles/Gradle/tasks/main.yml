@@ -1,18 +1,20 @@
 ---
-- name: Set environment variables for gradle
-  environment:
-    GRADLE_HOME: ~/gradle
-    PATH: $PATH:$GRADLE_HOME/bin
-  
+
 - name: Run gradle
-  command: gradle
+  shell: gradle &
   args:
     chdir: ~/gradle
+    executable: /bin/bash
+
 
 - name: Source ccsrc
-  command: source ccsrc
+  shell: source ccsrc
   args:
     chdir: ~/skyfall
+    executable: /bin/bash
+
+
+
 
 - name: Building Microservices
   command: gradle -x test microservice:administration:build

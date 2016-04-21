@@ -6,8 +6,8 @@
   # - updateNode
   # - downloadInstallPackages
   # - Cassandra
-  - Redis
-  - Kafka
+  # - Redis
+  # - Kafka
   - Gradle
   - Nodejs
   - apiGateway

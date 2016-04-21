@@ -76,7 +76,7 @@
   command: reboot
 
 - name: waiting for server to come back
-  local_action: wait_for host=128.136.179.50
+  local_action: wait_for host={{ server }}
                 port=22
                 state=started
   sudo: false

@@ -7,10 +7,6 @@
   sudo: True
   file: path=/var/log/cassandra state=directory owner=ubuntu group=ubuntu
 
-  environment:
-    CASSANDRA_HOME: ~/cassandra
-    PATH: $PATH:$CASSANDRA_HOME/bin
-
 - shell: nohup cassandra &
   args:
     chdir: ~/cassandra/

@@ -1,38 +1,46 @@
 - name: Running Microservices
-  command: java -jar administration/build/libs/*.jar 
+  command: java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar 
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar idm/build/libs/*.jar 
+- name: Running Microservices
+  command: java -jar idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar 
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar orchestration/build/libs/*.jar 
+- name: Running Microservices
+  command: java -jar orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar 
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar consume/build/libs/*.jar 
+- name: Running Microservices
+  command: java -jar consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar 
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar manage/build/libs/*.jar
+- name: Running Microservices
+  command: java -jar manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar monitor/build/libs/*.jar
+- name: Running Microservices
+  command: java -jar monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar iwan/build/libs/*.jar
+- name: Running Microservices
+  command: java -jar iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar logconsumer/build/libs/*.jar 
+- name: Running Microservices
+  command: java -jar logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar 
   args:
     chdir: ~/skyfall/server/microservice 
-  command: java -jar notification/build/libs/*.jar
+- name: Running Microservices
+  command: java -jar notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar
   args:
     chdir: ~/skyfall/server/microservice 
   
-- name: npm start on apigateway
-  command: npm start
-  args:
-    chdir: ~/skyfall/apigateway
+# - name: npm start on apigateway
+#   command: npm start 
+#   args:
+#     chdir: ~/skyfall/apigateway
 
 - name: npm start on ui
-  command: npm start
+  command: npm start 
   args:
     chdir: ~/skyfall/ui

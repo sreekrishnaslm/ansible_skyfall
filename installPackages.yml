@@ -8,9 +8,9 @@
   # - Cassandra
   # - Redis
   # - Kafka
-  - Gradle
+  # - Gradle
   # - Nodejs
   # - apiGateway
   # - UI
-  # - Microservice
+  - Microservice
 

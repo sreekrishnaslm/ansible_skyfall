@@ -1,37 +1,41 @@
 --- 
-- name: Configuring gconfig.js
-  become: yes
-  become_method: sudo
-  replace: dest=~/skyfall/ui/client/app/gconfig.js regexp='var PRODUCTION_MODE = true;' replace='var PRODUCTION_MODE = false;'
-  replace: dest=~/skyfall/ui/client/app/gconfig.js regexp='var IDM_URL =*;' replace='var IDM_URL = 'http://localhost:9001';'
-  replace: dest=~/skyfall/ui/client/app/gconfig.js regexp='var GATEWAY_URL =*;' replace='var GATEWAY_URL = 'http://localhost:9001';'
-  replace: dest=~/skyfall/ui/client/app/gconfig.js regexp='var LOGIN_URL =*;' replace='var LOGIN_URL = 'https://localhost/openam/UI/Logout?goto=http://localhost/skyfall';'
-  replace: dest=~/skyfall/ui/client/app/gconfig.js regexp='var UIROOTURL =*;' replace='var UIROOTURL = 'https://localhost:9003';'
+# - name: Configuring gconfig.js
+#   become: yes
+#   become_method: sudo
+#   replace: dest=/home/krishna/skyfall/ui/client/app/gconfig.js regexp='var PRODUCTION_MODE = true;' replace='var PRODUCTION_MODE = false;'
+#   replace: dest=/home/krishna/skyfall/ui/client/app/gconfig.js regexp='var IDM_URL =*;' replace='var IDM_URL = 'http://localhost:9001';'
+#   replace: dest=/home/krishna/skyfall/ui/client/app/gconfig.js regexp='var GATEWAY_URL =*;' replace='var GATEWAY_URL = 'http://localhost:9001';'
+#   replace: dest=/home/krishna/skyfall/ui/client/app/gconfig.js regexp='var LOGIN_URL =*;' replace='var LOGIN_URL = 'https://localhost/openam/UI/Logout?goto=http://localhost/skyfall';'
+#   replace: dest=/home/krishna/skyfall/ui/client/app/gconfig.js regexp='var UIROOTURL =*;' replace='var UIROOTURL = 'https://localhost:9003';'
 
-- name: Install Desktop for ubuntu
-  become: yes
-  become_method: sudo
-  apt: name=ubuntu-desktop state=present
+# - name: Install Desktop for ubuntu
+#   become: yes
+#   become_method: sudo
+#   apt: name=ubuntu-desktop state=present
 
+# - name: Update vm
+#   become: yes
+#   become_method: sudo
+#   apt: update_cache=yes
+  
 - name: Update vm
   become: yes
   become_method: sudo
-  apt: update_cache=yes
-  
-- command: reboot
+  command: reboot
 
 - name: waiting for server to come back
-  local_action: wait_for host={{server}}
+  local_action: wait_for host=10.64.72.17
                 port=22
                 state=started
   sudo: false
 
 
 - name: Source ccsrc
-  command: source ccsrc
+  shell: source ccsrc
   args:
     chdir: ~/skyfall
-
+    executable: /bin/bash
+    
 
 - name: Running npm Install in UI
   command: npm install

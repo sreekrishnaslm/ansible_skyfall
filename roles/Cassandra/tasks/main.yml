@@ -1,12 +1,44 @@
 ---
-- name: Create directory cassandra
-  sudo: True
-  file: state=directory path=/var/lib/cassandra owner=ubuntu group=ubuntu
+# - name: Create directory cassandra
+#   sudo: True
+#   file: state=directory path=/var/lib/cassandra owner=krishna group=krishna
 
-- name: Create directory cassandra
-  sudo: True
-  file: path=/var/log/cassandra state=directory owner=ubuntu group=ubuntu
+# - name: Create directory cassandra
+#   sudo: True
+#   file: path=/var/log/cassandra state=directory owner=krishna group=krishna
+  
 
-- shell: nohup cassandra &
+
+- name: Set Cassandra path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/krishna/cassandra/bin).*?)(["]*)$' line="PATH=\1\2:/home/krishna/cassandra/bin\3"
+
+- name: Set java path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/usr/local/java/bin).*?)(["]*)$' line="PATH=\1\2:/usr/local/java/bin\3"
+
+- name: Set jre path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/usr/local/java/bin).*?)(["]*)$' line="PATH=\1\2:/usr/local/java/bin\3"
+
+- name: add gradle path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/krishna/gradle/bin).*?)(["]*)$' line="PATH=\1\2:/home/krishna/gradle/bin\3"
+
+- name: add redis path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/krishna/redis/src).*?)(["]*)$' line="PATH=\1\2:/home/krishna/redis/src\3"
+
+- name: add kafka path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/krishna/kafka/bin).*?)(["]*)$' line="PATH=\1\2:/home/krishna/kafka/bin\3"
+
+- name: add bower path to /etc/environment
+  sudo: True
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/krishna/skyfall/ui/node_modules/bower/bin).*?)(["]*)$' line="PATH=\1\2:/home/krishna/skyfall/ui/node_modules/bower/bin\3"
+
+- name: run Cassandra
+  shell: nohup cassandra &
   args:
-    chdir: ~/cassandra/
+    chdir: ~/cassandra
+    executable: /bin/bash

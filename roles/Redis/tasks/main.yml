@@ -23,7 +23,11 @@
   args:
     chdir: ~/redis
 
-
+- name: Source profile
+  shell: source /etc/profile
+  args:
+    chdir: ~/
+    executable: /bin/bash
 
 - name: add pass to redis.conf
   shell: echo "requirepass 'cisco'" >> ~/redis/redis.conf

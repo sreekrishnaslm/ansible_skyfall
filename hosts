@@ -1,5 +1,2 @@
-[local]
-192.168.128.133
-
 [web]
-128.136.179.172 ansible_connection=ssh ansible_user=ubuntu
+10.64.72.17 ansible_connection=ssh ansible_user=krishna

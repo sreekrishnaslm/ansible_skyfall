@@ -1,8 +1,9 @@
 ---
 - name: Source ccsrc
-  command: source ccsrc
+  shell: source ccsrc
   args:
     chdir: ~/skyfall
+    executable: /bin/bash
 
 - name: Running npm Install in apigateway
   command: npm install

@@ -9,8 +9,8 @@
   # - Redis
   # - Kafka
   - Gradle
-  - Nodejs
-  - apiGateway
-  - UI
-  - Microservice
+  # - Nodejs
+  # - apiGateway
+  # - UI
+  # - Microservice
 

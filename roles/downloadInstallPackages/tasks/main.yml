@@ -1,54 +1,54 @@
 ---
 
-- name: Download and Extract cassandra
-  unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
+# - name: Download and Extract cassandra
+#   unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
 
-- name: Rename apache cassandra to cassandra
-  shell: mv ~/apache-cassandra-2.2.5 ~/cassandra
-
-
-- name: Download java
-  command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
-
-- name: Create directory java
-  file: path=~/java state=directory
-
-- name: Extract java
-  command: tar -zxf jdk.tar.gz -C ~/java --strip-components=1
-
-- name: Move java files
-  become: yes
-  become_method: sudo
-  command: mv /home/ubuntu/java /usr/local/
+# - name: Rename apache cassandra to cassandra
+#   shell: mv ~/apache-cassandra-2.2.5 ~/cassandra
 
 
-- name: Download and Extract redis
-  unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
+# - name: Download java
+#   command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
 
-- name: Rename redis
-  shell: mv ~/redis-3.0.7 ~/redis
+# - name: Create directory java
+#   file: path=~/java state=directory
 
-- name : Install unzip
-  become: yes
-  become_method: sudo
-  apt: name=unzip state=present
+# - name: Extract java
+#   command: tar -zxf jdk.tar.gz -C ~/java --strip-components=1
 
-- name: Download and Extract gradle
-  unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
+# - name: Move java files
+#   become: yes
+#   become_method: sudo
+#   command: mv /home/ubuntu/java /usr/local/
 
-- name: Rename gradle
-  shell: mv ~/gradle-2.11 ~/gradle
+
+# - name: Download and Extract redis
+#   unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
+
+# - name: Rename redis
+#   shell: mv ~/redis-3.0.7 ~/redis
+
+# - name : Install unzip
+#   become: yes
+#   become_method: sudo
+#   apt: name=unzip state=present
+
+# - name: Download and Extract gradle
+#   unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
+
+# - name: Rename gradle
+#   shell: mv ~/gradle-2.11 ~/gradle
   
 
-- name: Download and Extract kafka
-  unarchive: src=http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz dest=~/ copy=no
+# - name: Download and Extract kafka
+#   unarchive: src=http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz dest=~/ copy=no
 
-- name: Rename kafka
-  shell: mv ~/kafka_2.11-0.8.2.1 ~/kafka
+# - name: Rename kafka
+#   shell: mv ~/kafka_2.11-0.8.2.1 ~/kafka
 
 
-- name: Create directory skyfall
-  file: path=~/skyfall state=directory
+# - name: Create directory skyfall
+#   file: path=~/skyfall state=directory
 
 - name: Copy skyfall zip
   copy: src=~/skyfall.tar.gz dest=~/

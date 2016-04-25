@@ -26,11 +26,6 @@
                 state=started
   sudo: false
 
-- name: waiting for server to come back
-  local_action: wait_for host=128.136.179.117
-                port=22
-                state=started
-  sudo: false
 
 - name: Source ccsrc
   command: source ccsrc

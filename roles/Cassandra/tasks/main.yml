@@ -1,11 +1,11 @@
 ---
-# - name: Create directory cassandra
-#   sudo: True
-#   file: state=directory path=/var/lib/cassandra owner=krishna group=krishna
+- name: Create directory cassandra
+  sudo: True
+  file: state=directory path=/var/lib/cassandra owner=krishna group=krishna
 
-# - name: Create directory cassandra
-#   sudo: True
-#   file: path=/var/log/cassandra state=directory owner=krishna group=krishna
+- name: Create directory cassandra
+  sudo: True
+  file: path=/var/log/cassandra state=directory owner=krishna group=krishna
   
 
 

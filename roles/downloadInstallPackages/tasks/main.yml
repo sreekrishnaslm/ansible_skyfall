@@ -1,64 +1,64 @@
 ---
-# - name : Install unzip
-#   become: yes
-#   become_method: sudo
-#   apt: name=unzip state=present
+- name : Install unzip
+  become: yes
+  become_method: sudo
+  apt: name=unzip state=present
 
-# - name: Download and Extract cassandra
-#   command: wget http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz
-#   # unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
-# - name: Create directory cassandra
-#   file: path=~/cassandra state=directory
+- name: Download and Extract cassandra
+  command: wget http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz
+  # unarchive: src=http://apache.mirrors.lucidnetworks.net/cassandra/2.2.5/apache-cassandra-2.2.5-bin.tar.gz dest=~/ copy=no
+- name: Create directory cassandra
+  file: path=~/cassandra state=directory
 
-# - name: Extract cassandra
-#   command: tar -zxf apache-cassandra-2.2.5-bin.tar.gz -C ~/cassandra --strip-components=1
+- name: Extract cassandra
+  command: tar -zxf apache-cassandra-2.2.5-bin.tar.gz -C ~/cassandra --strip-components=1
 
 
 # # - name: Rename apache cassandra to cassandra
 # #   shell: mv ~/apache-cassandra-2.2.5 ~/cassandra
 
 
-# - name: Download java
-#   command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
+- name: Download java
+  command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
 
-# - name: Create directory java
-#   file: path=~/java state=directory
+- name: Create directory java
+  file: path=~/java state=directory
 
-# - name: Extract java
-#   command: tar -zxf jdk.tar.gz -C ~/java --strip-components=1
+- name: Extract java
+  command: tar -zxf jdk.tar.gz -C ~/java --strip-components=1
 
-# - name: Move java files
-#   become: yes
-#   become_method: sudo
-#   command: mv /home/krishna/java /usr/local/
+- name: Move java files
+  become: yes
+  become_method: sudo
+  command: mv /home/krishna/java /usr/local/
 
 
-# - name: Download and Extract redis
-#   unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
+- name: Download and Extract redis
+  unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
 
-# - name: Rename redis
-#   shell: mv ~/redis-3.0.7 ~/redis
+- name: Rename redis
+  shell: mv ~/redis-3.0.7 ~/redis
 
 # # - name : Install unzip
 # #   become: yes
 # #   become_method: sudo
 # #   apt: name=unzip state=present
 
-# - name: Download and Extract gradle
-#   unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
+- name: Download and Extract gradle
+  unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
 
-# - name: Rename gradle
-#   shell: mv ~/gradle-2.11 ~/gradle
+- name: Rename gradle
+  shell: mv ~/gradle-2.11 ~/gradle
   
 
-# - name: Download and Extract kafka
-#   command: wget http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz
+- name: Download and Extract kafka
+  command: wget http://apache.spinellicreations.com/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz
 
-# - name: Create directory kafka
-#   file: path=~/kafka state=directory
+- name: Create directory kafka
+  file: path=~/kafka state=directory
 
-# - name: Extract kafka
-#   command: tar -zxf kafka_2.11-0.8.2.1.tgz -C ~/kafka --strip-components=1
+- name: Extract kafka
+  command: tar -zxf kafka_2.11-0.8.2.1.tgz -C ~/kafka --strip-components=1
 
 
 # - name: Rename kafka:
@@ -66,7 +66,7 @@
 
 
 # - name: Create directory skyfall
-#   file: path=~/skyfall state=directory
+  # file: path=~/skyfall state=directory
 
 # - name: Copy skyfall zip
 #   copy: src=~/skyfall.tar.gz dest=~/

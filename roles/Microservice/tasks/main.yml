@@ -35,12 +35,14 @@
   args:
     chdir: ~/skyfall/server/microservice 
   
-# - name: npm start on apigateway
-#   command: npm start 
-#   args:
-#     chdir: ~/skyfall/apigateway
-
-- name: npm start on ui
+- name: npm start on apigateway
   command: npm start 
   args:
-    chdir: ~/skyfall/ui
+    chdir: ~/skyfall/apigateway
+
+
+#Check this with prakash and then run
+# - name: npm start on ui
+#   command: npm start 
+#   args:
+#     chdir: ~/skyfall/ui

@@ -1,17 +1,17 @@
-# ---
+---
 
-# - name: Run gradle
-#   command: gradle 
-#   args:
-#     chdir: ~/
+- name: Run gradle
+  command: gradle 
+  args:
+    chdir: ~/
   
   
 
-# - name: Source ccsrc
-#   shell: source ccsrc
-#   args:
-#     chdir: ~/skyfall
-#     executable: /bin/bash
+- name: Source ccsrc
+  shell: source ccsrc
+  args:
+    chdir: ~/skyfall
+    executable: /bin/bash
 
 # # - name: Create build directories
 # #   file: path=~/skyfall/server/microservice/administration/build state=directory
@@ -57,61 +57,61 @@
 
 
 
-# - name: Building Microservices
-#   command: gradle -x test microservice:administration:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     # executable: /bin/bash.... comment this and it works
-# - name: Building Microservices
-#   command: gradle -x test microservice:idm:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:orchestration:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:consume:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:manage:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:monitor:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:cgps:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:iwan:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:logconsumer:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
-# - name: Building Microservices
-#   command: gradle -x test microservice:notification:build 
-#   args:
-#     chdir: ~/skyfall/server 
-#     #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:administration:build 
+  args:
+    chdir: ~/skyfall/server 
+    # executable: /bin/bash.... comment this and it works
+- name: Building Microservices
+  command: gradle -x test microservice:idm:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:orchestration:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:consume:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:manage:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:monitor:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:cgps:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:iwan:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:logconsumer:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
+- name: Building Microservices
+  command: gradle -x test microservice:notification:build 
+  args:
+    chdir: ~/skyfall/server 
+    #executable: /bin/bash
   
-# - name: Running DB Installer
-#   command: java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-#   args:
-#     chdir: ~/skyfall/server/microservice 
+- name: Running DB Installer
+  command: java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
+  args:
+    chdir: ~/skyfall/server/microservice 
     # executable: /bin/bash
 - name: Running DB Installer
   command: java -jar idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 

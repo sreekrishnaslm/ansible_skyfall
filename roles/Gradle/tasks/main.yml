@@ -3,58 +3,13 @@
 - name: Run gradle
   command: gradle 
   args:
-    chdir: ~/
+    chdir: /home/cisco/
   
-  
-
 - name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
-
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/administration/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/cgps/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/idm/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/iwan/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/orchestration/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/consume/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/manage/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/monitor/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/logconsumer/build state=directory
-# # - name: Create build directories
-# #   file: path=~/skyfall/server/microservice/notification/build state=directory
-
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/adminBuild/build/ dest=~/skyfall/server/microservice/administration/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/idmBuild/build/ dest=~/skyfall/server/microservice/idm/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/orchesBuild/build/ dest=~/skyfall/server/microservice/orchestration/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/consumeBuild/build/ dest=~/skyfall/server/microservice/consume/build
-# # - name: Copy build filesdd
-# #   copy: src=~/buildfiles/manageBuild/build/ dest=~/skyfall/server/microservice/manage/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/monitorBuild/build/ dest=~/skyfall/server/microservice/monitor/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/iwanBuild/build/ dest=~/skyfall/server/microservice/iwan/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/logconsumerBuild/build/ dest=~/skyfall/server/microservice/logconsumer/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/notifiBuild/build/ dest=~/skyfall/server/microservice/notification/build
-# # - name: Copy build files
-# #   copy: src=~/buildfiles/cgpsBuild/build/ dest=~/skyfall/server/microservice/cgps/build
-
 
 
 - name: Building Microservices
@@ -118,7 +73,7 @@
   args:
     chdir: ~/skyfall/server/microservice 
 - name: Running DB Installer
-  command: java -jar orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
+  command: java -jar orchestration/build/libs/orchestration-2.3.0-SNAPSHOT.jar -Mode NewInstall 
   args:
     chdir: ~/skyfall/server/microservice 
 - name: Running DB Installer

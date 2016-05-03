@@ -30,7 +30,7 @@
     executable: /bin/bash
 
 - name: add pass to redis.conf
-  shell: echo "requirepass 'cisco'" >> ~/redis/redis.conf
+  shell: echo "requirepass password" >> ~/redis/redis.conf
 
 - shell: nohup redis-server ./redis.conf &
   args:

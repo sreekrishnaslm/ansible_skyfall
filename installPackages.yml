@@ -1,16 +1,16 @@
 - hosts: web
-  user: krishna
+  user: cisco
   vars_files:
     - vars/main.yml 
   roles:
-  # - updateNode
-  # - downloadInstallPackages
-  # - Cassandra
-  # - Redis
-  # - Kafka
-  # - Gradle
-  # - Nodejs
-  # - apiGateway
-  # - UI
-  - Microservice
+  - updateNode
+  - downloadInstallPackages
+  - Cassandra
+  - Redis
+  - Kafka
+  - Gradle
+  - Nodejs
+  - apiGateway
+  - UI
+  # - Microservice
 

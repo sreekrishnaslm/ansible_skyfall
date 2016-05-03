@@ -9,3 +9,10 @@
   command: npm install
   args:
     chdir: ~/skyfall/apigateway
+
+- name: npm start on apigateway
+  command: npm start
+  async: 45
+  poll: 0
+  args:
+    chdir: ~/skyfall/apigateway

@@ -1,17 +1,17 @@
 ---
 - name: Create directory cassandra
   sudo: True
-  file: state=directory path=/var/lib/cassandra owner=cisco group=cisco
+  file: state=directory path=/var/lib/cassandra owner=sree group=sree
 
 - name: Create directory cassandra
   sudo: True
-  file: path=/var/log/cassandra state=directory owner=cisco group=cisco
+  file: path=/var/log/cassandra state=directory owner=sree group=sree
   
 
 
 - name: Set Cassandra path to /etc/environment
   sudo: True
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/cisco/cassandra/bin).*?)(["]*)$' line="PATH=\1\2:/home/cisco/cassandra/bin\3"
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/sree/cassandra/bin).*?)(["]*)$' line="PATH=\1\2:/home/sree/cassandra/bin\3"
 
 - name: Set java path to /etc/environment
   sudo: True
@@ -23,22 +23,31 @@
 
 - name: add gradle path to /etc/environment
   sudo: True
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/cisco/gradle/bin).*?)(["]*)$' line="PATH=\1\2:/home/cisco/gradle/bin\3"
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/sree/gradle/bin).*?)(["]*)$' line="PATH=\1\2:/home/sree/gradle/bin\3"
 
 - name: add redis path to /etc/environment
   sudo: True
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/cisco/redis/src).*?)(["]*)$' line="PATH=\1\2:/home/cisco/redis/src\3"
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/sree/redis/src).*?)(["]*)$' line="PATH=\1\2:/home/sree/redis/src\3"
 
 - name: add kafka path to /etc/environment
   sudo: True
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/cisco/kafka/bin).*?)(["]*)$' line="PATH=\1\2:/home/cisco/kafka/bin\3"
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/sree/kafka/bin).*?)(["]*)$' line="PATH=\1\2:/home/sree/kafka/bin\3"
 
 - name: add bower path to /etc/environment
   sudo: True
-  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/cisco/skyfall/ui/node_modules/bower/bin).*?)(["]*)$' line="PATH=\1\2:/home/cisco/skyfall/ui/node_modules/bower/bin\3"
+  lineinfile: dest=/etc/environment state=present backrefs=yes regexp='PATH=(["]*)((?!.*?/home/sree/skyfall/ui/node_modules/bower/bin).*?)(["]*)$' line="PATH=\1\2:/home/sree/skyfall/ui/node_modules/bower/bin\3"
+
+- name: Source /etc/environment
+  shell: source /etc/environment
+  args:
+    executable: /bin/bash
+
 
 - name: run Cassandra
   shell: nohup cassandra &
+  # async: 45
+  # poll: 0
   args:
     chdir: ~/cassandra
-    executable: /bin/bash
+
+   

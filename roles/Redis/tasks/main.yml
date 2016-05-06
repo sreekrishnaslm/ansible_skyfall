@@ -26,7 +26,6 @@
 - name: Source profile
   shell: source /etc/profile
   args:
-    chdir: ~/
     executable: /bin/bash
 
 - name: add pass to redis.conf
@@ -35,4 +34,6 @@
 - shell: nohup redis-server ./redis.conf &
   args:
     chdir: ~/redis
+
+  
   

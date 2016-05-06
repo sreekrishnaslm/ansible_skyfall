@@ -1,35 +1,31 @@
 ---
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
- name: Running Microservices
-  command: java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0
+- name: Running Microservices 1
+  shell: nohup java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar & 
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0 
+- name: Running Microservices 2
+  shell: nohup java -jar idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
@@ -37,15 +33,13 @@
 
 
 
-- name: Running Microservices
-  command: java -jar orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0 
+- name: Running Microservices 3
+  shell: nohup java -jar orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
@@ -53,102 +47,75 @@
 
 
 
-- name: Running Microservices
-  command: java -jar consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0 
+- name: Running Microservices 4
+  shell: nohup java -jar consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0
+- name: Running Microservices 5
+  shell: nohup java -jar manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0
+- name: Running Microservices 6
+  shell: nohup java -jar monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0
+- name: Running Microservices 7
+  shell: nohup java -jar iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0 
+- name: Running Microservices 8
+  shell: nohup java -jar logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
 
 
-- name: Source ccrc
+- name: Source ccsrc
   shell: source ccsrc
   args:
     chdir: ~/skyfall
     executable: /bin/bash
 
 
-- name: Running Microservices
-  command: java -jar notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar
-  async: 45
-  poll: 0
+- name: Running Microservices 9
+  shell: nohup java -jar notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar &
   args:
     chdir: ~/skyfall/server/microservice 
   
 
-
-# Check this with prakash and then run
-- name: Source ccrc
-  shell: source ccsrc
-  args:
-    chdir: ~/skyfall
-    executable: /bin/bash
-
-
-- name: npm start on ui
-  command: npm start
-  async: 45
-  poll: 0 
-  args:
-    chdir: ~/skyfall/ui

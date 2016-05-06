@@ -11,8 +11,6 @@
     chdir: ~/skyfall/apigateway
 
 - name: npm start on apigateway
-  command: npm start
-  async: 45
-  poll: 0
+  shell: npm start &
   args:
     chdir: ~/skyfall/apigateway

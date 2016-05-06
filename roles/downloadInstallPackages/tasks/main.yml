@@ -14,9 +14,6 @@
   command: tar -zxf apache-cassandra-2.2.6-bin.tar.gz -C ~/cassandra --strip-components=1
 
 
-# - name: Rename apache cassandra to cassandra
-#   shell: mv ~/apache-cassandra-2.2.5 ~/cassandra
-
 
 - name: Download java
   command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.tar.gz -O jdk.tar.gz'
@@ -30,7 +27,7 @@
 - name: Move java files
   become: yes
   become_method: sudo
-  command: mv /home/cisco/java /usr/local/
+  command: mv /home/sree/java /usr/local/
 
 
 - name: Download and Extract redis
@@ -39,15 +36,10 @@
 - name: Extract redis
   command: tar -zvxf redis-3.0.7.tar.gz
 
-  # unarchive: src=http://download.redis.io/releases/redis-3.0.7.tar.gz dest=~/ copy=no
 
 - name: Rename redis
   shell: mv ~/redis-3.0.7 ~/redis
 
-- name : Install unzip
-  become: yes
-  become_method: sudo
-  apt: name=unzip state=present
 
 - name: Download and Extract gradle
   unarchive: src=https://downloads.gradle.org/distributions/gradle-2.11-bin.zip dest=~/ copy=no
@@ -65,29 +57,53 @@
 - name: Extract kafka
   command: tar -zxf kafka_2.11-0.8.2.1.tgz -C ~/kafka --strip-components=1
 
-- name: Create directory skyfall
-  file: path=~/skyfall state=directory
 
 - name: Copy config to profile
   become: yes
   become_method: sudo
-  shell: cat /home/cisco/config.txt >> /etc/profile
+  shell: cat /home/$USER/config.txt >> /etc/profile
+
+- name: Source /etc/profile
+  shell: source /etc/profile
+  args:
+    executable: /bin/bash
 
 - name: Run Commands
   become: yes
   become_method: sudo
   command: update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/bin/java" 1
-  command: update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/bin/javac" 1
-  command: update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/bin/javaws" 1
-  command: update-alternatives --set java /usr/local/java/bin/java
-  command: update-alternatives --set javac /usr/local/java/bin/javac
-  command: update-alternatives --set javaws /usr/local/java/bin/javaws
-  command: reboot
 
-- name: waiting for server to come back
-  local_action: wait_for host=192.168.37.132
-                port=22
-                state=started
-  sudo: false
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/bin/javac" 1
+
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/bin/javaws" 1
+  
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --set java /usr/local/java/bin/java
+  
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --set javac /usr/local/java/bin/javac
+  
+- name: Run Commands
+  become: yes
+  become_method: sudo
+  command: update-alternatives --set javaws /usr/local/java/bin/javaws
+  
+#   command: reboot
+
+# - name: waiting for server to come back
+#   local_action: wait_for host=10.64.72.17
+#                 port=22
+#                 state=started
+#   sudo: false
 
 

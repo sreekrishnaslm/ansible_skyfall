@@ -1,2 +1,2 @@
 [web]
-10.64.72.17 ansible_connection=ssh ansible_user=krishna
+10.64.72.17 ansible_connection=ssh ansible_user=sree

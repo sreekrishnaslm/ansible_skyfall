@@ -16,101 +16,160 @@
   command: gradle -x test microservice:administration:build 
   args:
     chdir: ~/skyfall/server 
+
+- name: Running DB Installer 1
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 1
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+
     
 - name: Building Microservices 2
   command: gradle -x test microservice:idm:build 
   args:
     chdir: ~/skyfall/server 
+
+- name: Running DB Installer 2
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 2
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
     
+
+
 - name: Building Microservices 3
   command: gradle -x test microservice:orchestration:build 
   args:
     chdir: ~/skyfall/server 
+
+- name: Running DB Installer 3
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 3
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+
+
     
 - name: Building Microservices 4
   command: gradle -x test microservice:consume:build 
   args:
     chdir: ~/skyfall/server 
     
+- name: Running DB Installer 4
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 4
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+
+
 - name: Building Microservices 5
   command: gradle -x test microservice:manage:build 
   args:
     chdir: ~/skyfall/server 
-    
+
+- name: Running DB Installer 5
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 5
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+  
+
+
 - name: Building Microservices 6
   command: gradle -x test microservice:monitor:build 
   args:
     chdir: ~/skyfall/server 
     
+- name: Running DB Installer 6
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 6
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+
+
 - name: Building Microservices 7
   command: gradle -x test microservice:cgps:build 
   args:
     chdir: ~/skyfall/server 
     
+- name: Running DB Installer 7
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/cgps/build/libs/cgps-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+
+
 - name: Building Microservices 8
   command: gradle -x test microservice:iwan:build 
   args:
     chdir: ~/skyfall/server 
+
+- name: Running DB Installer 8
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 8
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
     
 - name: Building Microservices 9
   command: gradle -x test microservice:logconsumer:build 
   args:
     chdir: ~/skyfall/server 
     
+- name: Running DB Installer 9
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 9
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+
 - name: Building Microservices 10
   command: gradle -x test microservice:notification:build 
   args:
     chdir: ~/skyfall/server 
     
-
-
-  
-- name: Running DB Installer 1
-  command: java -jar administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-    
-- name: Running DB Installer 2
-  command: java -jar idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 3
-  command: java -jar orchestration/build/libs/orchestration-1.1.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 4
-  command: java -jar consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 5
-  command: java -jar manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 6
-  command: java -jar monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
- 
-- name: Running DB Installer 7
-  command: java -jar cgps/build/libs/cgps-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 8
-  command: java -jar iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
-- name: Running DB Installer 9
-  command: java -jar logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
-  args:
-    chdir: ~/skyfall/server/microservice 
-
 - name: Running DB Installer 10
-  command: java -jar notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall 
+  shell: source ~/skyfall/ccsrc && java -jar ~/skyfall/server/microservice/notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar -Mode NewInstall
   args:
-    chdir: ~/skyfall/server/microservice 
+    executable: /bin/bash
+
+- name: Running Microservices 10
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash

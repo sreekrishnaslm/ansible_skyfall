@@ -23,17 +23,18 @@
   args:
     chdir: ~/redis
 
-- name: Source profile
-  shell: source /etc/profile
-  args:
-    executable: /bin/bash
+# - name: Source profile
+#   shell: source /etc/profile
+#   args:
+#     executable: /bin/bash
 
 - name: add pass to redis.conf
   shell: echo "requirepass password" >> ~/redis/redis.conf
 
-- shell: nohup redis-server ./redis.conf &
+- shell: source /etc/profile && nohup redis-server ./redis.conf &
   args:
     chdir: ~/redis
+    executable: /bin/bash
 
   
   

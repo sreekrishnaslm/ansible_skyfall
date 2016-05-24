@@ -1,16 +1,18 @@
 ---
-- name: Source ccsrc
-  shell: source ccsrc
-  args:
-    chdir: ~/skyfall
-    executable: /bin/bash
+# - name: Source ccsrc
+#   shell: source ccsrc
+#   args:
+#     chdir: ~/skyfall
+    # executable: /bin/bash
 
 - name: Running npm Install in apigateway
-  command: npm install
+  command: source ~/skyfall/ccsrc && npm install
   args:
     chdir: ~/skyfall/apigateway
+    executable: /bin/bash
 
 - name: npm start on apigateway
-  shell: npm start &
+  shell: source ~/skyfall/ccsrc && npm start &
   args:
     chdir: ~/skyfall/apigateway
+    executable: /bin/bash

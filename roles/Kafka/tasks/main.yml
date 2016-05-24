@@ -1,13 +1,24 @@
 ---
-- name: Set no. of partitions to 7
-  replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'
+# - name: Set no. of partitions to 7
+#   replace: dest=~/kafka/config/server.properties regexp='num.partitions=1' replace='num.partitions=7'
+# - name: Source /etc/environment
+#   shell: source /etc/environment
+#   args:
+#     executable: /bin/bash
 
 - name: Run zookeeper
-  shell: nohup zookeeper-server-start.sh config/zookeeper.properties &
+  shell: source /etc/environment && nohup zookeeper-server-start.sh config/zookeeper.properties &
   args:
     chdir: ~/kafka
+    executable: /bin/bash
+
+# - name: Source /etc/environment
+#   shell: source /etc/environment
+#   args:
+#     executable: /bin/bash
 
 - name: Run kafka
-  shell: nohup kafka-server-start.sh config/server.properties &
+  shell: source /etc/environment && nohup kafka-server-start.sh config/server.properties &
   args:
     chdir: ~/kafka
+    executable: /bin/bash

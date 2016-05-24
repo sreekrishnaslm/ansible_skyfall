@@ -27,7 +27,7 @@
 - name: Move java files
   become: yes
   become_method: sudo
-  command: mv /home/sree/java /usr/local/
+  command: mv /home/cisco/java /usr/local/
 
 
 - name: Download and Extract redis
@@ -57,16 +57,24 @@
 - name: Extract kafka
   command: tar -zxf kafka_2.11-0.8.2.1.tgz -C ~/kafka --strip-components=1
 
+- name: Copy skyfall directory from source
+  command: scp -r shree@10.64.72.104:~/skyfall ~/ 
+
+- name: Copy config.txt from source
+  command: scp krishna@192.168.128.137:~/config.txt ~/
+
 
 - name: Copy config to profile
   become: yes
   become_method: sudo
-  shell: cat /home/$USER/config.txt >> /etc/profile
-
-- name: Source /etc/profile
-  shell: source /etc/profile
+  shell: cat /home/cisco/config.txt >> /etc/profile && source /etc/profile
   args:
     executable: /bin/bash
+
+# - name: Source /etc/profile
+#   shell: source /etc/profile
+#   args:
+#     executable: /bin/bash
 
 - name: Run Commands
   become: yes

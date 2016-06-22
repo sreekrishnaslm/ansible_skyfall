@@ -1,0 +1,97 @@
+---
+- name: Source /etc/environment
+  shell: source /etc/environment
+  args:
+    executable: /bin/bash
+
+
+- name: run Cassandra
+  shell: source /etc/environment && nohup cassandra &
+  args:
+    chdir: ~/cassandra
+    executable: /bin/bash
+
+
+- name: Run zookeeper
+  shell: source /etc/environment && nohup zookeeper-server-start.sh config/zookeeper.properties &
+  args:
+    chdir: ~/kafka
+    executable: /bin/bash
+
+
+- name: Run kafka
+  shell: source /etc/environment && nohup kafka-server-start.sh config/server.properties &
+  args:
+    chdir: ~/kafka
+    executable: /bin/bash
+
+
+- name: Run Redis 
+  shell: source /etc/profile && nohup redis-server ./redis.conf &
+  args:
+    chdir: ~/redis
+    executable: /bin/bash
+
+- name: Source ccsrc
+  shell: source ccsrc
+  args:
+    chdir: ~/skyfall
+    executable: /bin/bash
+
+
+- name: npm start on apigateway
+  shell: npm start &
+  args:
+    chdir: ~/skyfall/apigateway
+
+
+- name: npm start on ui
+  shell: npm start &
+  args:
+    chdir: ~/skyfall/ui
+
+
+- name: Running Microservices 1
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/administration/build/libs/administration-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 2
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/idm/build/libs/idm-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 3
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/orchestration/build/libs/orchestration-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 4
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/consume/build/libs/consume-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 5
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/manage/build/libs/manage-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 6
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/monitor/build/libs/monitor-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 8
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/iwan/build/libs/iwan-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 9
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/logconsumer/build/libs/logconsumer-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash
+
+- name: Running Microservices 10
+  shell: source ~/skyfall/ccsrc && nohup java -jar ~/skyfall/server/microservice/notification/build/libs/notification-1.0.0.BUILD-SNAPSHOT.jar &
+  args:
+    executable: /bin/bash

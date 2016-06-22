@@ -1,8 +1,10 @@
-user: root
-group: root
+owner: cisco
+user: cisco
+group: cisco
+path: /home/cisco
 zookeeper_version: 3.4.7
 nodejs_forever: true
-server: 128.136.179.199
+server: 
 nodejs_npm_global_packages:
   - name: jslint
   - name: node-sass

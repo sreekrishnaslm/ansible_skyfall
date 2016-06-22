@@ -2,27 +2,27 @@
 - name: Configuring gconfig.js
   become: yes
   become_method: sudo
-  replace: dest=/home/cisco/skyfall/ui/client/app/gconfig.js regexp='var PRODUCTION_MODE = true;' replace='var PRODUCTION_MODE = false;'
+  replace: dest={{path}}/skyfall/ui/client/app/gconfig.js regexp='var PRODUCTION_MODE = true;' replace='var PRODUCTION_MODE = false;'
 
 - name: Configuring gconfig.js
   become: yes
   become_method: sudo
-  replace: dest=/home/cisco/skyfall/ui/client/app/gconfig.js regexp='var IDM_URL =*;' replace='var IDM_URL = 'http://localhost:9001';'
+  replace: dest={{path}}/skyfall/ui/client/app/gconfig.js regexp='var IDM_URL =*;' replace='var IDM_URL = 'http://localhost:9001';'
 
 - name: Configuring gconfig.js
   become: yes
   become_method: sudo
-  replace: dest=/home/cisco/skyfall/ui/client/app/gconfig.js regexp='var GATEWAY_URL =*;' replace='var GATEWAY_URL = 'http://localhost:9001';'
+  replace: dest={{path}}/skyfall/ui/client/app/gconfig.js regexp='var GATEWAY_URL =*;' replace='var GATEWAY_URL = 'http://localhost:9001';'
 
 - name: Configuring gconfig.js
   become: yes
   become_method: sudo
-  replace: dest=/home/cisco/skyfall/ui/client/app/gconfig.js regexp='var LOGIN_URL =*;' replace='var LOGIN_URL = 'https://localhost/openam/UI/Logout?goto=http://localhost/skyfall';'  
+  replace: dest={{path}}/skyfall/ui/client/app/gconfig.js regexp='var LOGIN_URL =*;' replace='var LOGIN_URL = 'https://localhost/openam/UI/Logout?goto=http://localhost/skyfall';'  
   
 - name: Configuring gconfig.js
   become: yes
   become_method: sudo
-  replace: dest=/home/cisco/skyfall/ui/client/app/gconfig.js regexp='var UIROOTURL =*;' replace='var UIROOTURL = 'https://localhost:9003';'
+  replace: dest={{path}}/skyfall/ui/client/app/gconfig.js regexp='var UIROOTURL =*;' replace='var UIROOTURL = 'https://localhost:9003';'
 
 
 # - name: waiting for server to come back
@@ -32,18 +32,17 @@
 #   sudo: false
 
 
-# - name: Source ccsrc
-#   shell: source ccsrc
-#   args: 
-#     chdir: ~/skyfall
-#     executable: /bin/bash
+- name: Source ccsrc
+  shell: source ccsrc
+  args: 
+    chdir: ~/skyfall
+    executable: /bin/bash
     
 
 - name: Running npm Install in UI
-  shell: source ~/skyfall/ccsrc && npm install
+  shell: npm install
   args:
     chdir: ~/skyfall/ui
-    executable: /bin/bash
 
 
 - name: Install bower
@@ -52,8 +51,68 @@
     chdir: ~/skyfall/ui/
 
 
+
+
 - name: npm start on ui
-  shell: source ~/skyfall/ccsrc && npm start &
+  shell: npm start &
   args:
     chdir: ~/skyfall/ui
-    executable: /bin/bash
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install pretty-hrtime
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install chalk
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install liftoff
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install tildify
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install interpret
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+
+# - name: Installing Dependencies in UI
+#   shell: npm install v8flags
+#   args:
+#     chdir: ~/skyfall/ui
+    
+
+# - name: Removing node_modules
+#   become: sudo
+#   become_method: yes
+#   command: rm -rf node_modules
+
+
+# - name: Running npm Install in UI
+#   shell: npm install
+#   args:
+#     chdir: ~/skyfall/ui
+
+
+# - name: npm start on ui
+#   shell: npm start &
+#   args:
+#     chdir: ~/skyfall/ui

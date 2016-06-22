@@ -1,18 +1,25 @@
 ---
-# - name: Source ccsrc
-#   shell: source ccsrc
-#   args:
-#     chdir: ~/skyfall
-    # executable: /bin/bash
+
+- name: Source ccsrc
+  shell: source ccsrc
+  args:
+    chdir: ~/skyfall
+    executable: /bin/bash
+
+- name: Configuring git
+  command: git config --global url."https://".insteadOf git://
+
+
 
 - name: Running npm Install in apigateway
-  command: source ~/skyfall/ccsrc && npm install
+  command: npm install
   args:
     chdir: ~/skyfall/apigateway
-    executable: /bin/bash
+   
+
 
 - name: npm start on apigateway
-  shell: source ~/skyfall/ccsrc && npm start &
+  shell: npm start &
   args:
     chdir: ~/skyfall/apigateway
-    executable: /bin/bash
+    
